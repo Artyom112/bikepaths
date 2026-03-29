@@ -1,22 +1,20 @@
 window.dashExtensions = Object.assign({}, window.dashExtensions, {
     default: {
-        function0: function(feature, latlng) {
-            // Получаем название станции, если оно есть в данных
-            const name = feature.properties.name || "Станция метро";
-
-            // Создаем маркер
-            const marker = L.circleMarker(latlng, {
-                radius: 6,
+        function0: function(feature) {
+            return {
+                weight: 10,
+                color: 'cyan',
+                opacity: 0.6
+            };
+        },
+        function1: function(feature, latlng) {
+            return L.circleMarker(latlng, {
+                radius: 4,
                 fillColor: 'red',
                 color: 'white',
                 weight: 1,
-                fillOpacity: 0.9
+                fillOpacity: 1
             });
-
-            // Привязываем всплывающее окно (Popup)
-            marker.bindPopup(`<b>${name}</b>`);
-
-            return marker;
         }
 
     }
