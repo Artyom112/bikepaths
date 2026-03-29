@@ -1,0 +1,13 @@
+/*
+  Подсветка велодорожек через CSS :hover вместо dash-leaflet hoverStyle.
+  Встроенный hover вызывает bringToFront() и иногда ломает mouseout — линия
+  остаётся бирюзовой. Браузерный :hover снимается при уходе курсора.
+*/
+.leaflet-overlay-pane svg path.cycle-line-path {
+    transition: stroke 0.12s ease, stroke-width 0.12s ease;
+}
+
+.leaflet-overlay-pane svg path.cycle-line-path:hover {
+    stroke: cyan !important;
+    stroke-width: 8 !important;
+}

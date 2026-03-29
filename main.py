@@ -98,8 +98,16 @@ app.layout = html.Div([
             dl.GeoJSON(
                 data=cycle_geojson,
                 id="cycle-layer",
-                options=dict(style=dict(color="darkblue", weight=4, opacity=0.8)),
-                hoverStyle=dict(weight=8, color="cyan"),
+                # className + assets/cycle_hover.css вместо hoverStyle: в dash-leaflet
+                # hoverStyle вызывает bringToFront() и даёт залипание бирюзового без mouseout.
+                options=dict(
+                    style=dict(
+                        color="darkblue",
+                        weight=4,
+                        opacity=0.8,
+                        className="cycle-line-path",
+                    )
+                ),
             ),
             
             # Контейнер для попапа
